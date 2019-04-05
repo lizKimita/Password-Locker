@@ -33,5 +33,15 @@ class Credentials:
     @classmethod
     def find_by_account_user_name(cls,account_user_name):
         '''
-        Method that 
+        Method that takes in a user's user_name and displays his or her saved credentials
+
+        Args:
+            account_user_name:User_name to search for
+        Returns: 
+            The Credentials saved by that user
         '''
+
+        for credentials in cls.credentials_list:
+            if credentials.account_user_name == account_user_name:
+                return credentials
+
