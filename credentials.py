@@ -2,6 +2,7 @@ class Credentials:
     '''
     Class to generate new instances of the user's credentials.
     ''' 
+    credentials_list = []
 
     def __init__(self, platform, account_user_name, account_password):  
         '''
@@ -16,3 +17,9 @@ class Credentials:
         self.platform = platform
         self.account_user_name = account_user_name
         self.account_password = account_password
+
+    def save_credentials(self):
+        '''
+        save_credentials method saves credentials objects into the credentials_list
+        '''
+        Credentials.credentials_list.append(self)
