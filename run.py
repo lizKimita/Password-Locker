@@ -101,46 +101,73 @@ def main():
             print("Last Name......") 
             last_name = input()
 
-            print("Phone number....")
+            print("User Name....")
             user_name = input()
 
-            print("Email address....")
+            print("Password....")
             password = input()
 
             save_user (create_new_user(first_name, last_name, user_name, password))  
             print('\n')
-            print(f"New User{first_name} {last_name} created")
+            print(f"New Account for {first_name} {last_name} created")
             print('\n')
 
-        elif short_code == 'dc':
-            if display_contacts():
-                print ("Here is a list of all your contacts")
-                print('\n')
+        elif short_code == 'li':
+            print('Please enter your details below to log into your account:')
+            user_name = input('Enter your Account user_name here:')
+            password= str(input('Enter your Account password here:'))
+            verify_user = verify_user(user_name)
+            if verify_user == verify_user:
+                print(f'Hey {user_name}. Welcome to your account.')
+                while True:
+                    print('To proceed use these shortcodes:\n cc - Create new Credentials, dc - Delete Credential, fd - Find Credential, ds - display saved credentials, ex - exit')
+                    short_code = input().lower()
+                    if short_code == 'ex':
+                        print(f'Goodbye{user_name}.')
+                        break
+                    elif short_code == 'fd':
+                        print ('Enter the Platform you want to search for')
+                        search_platform = input()
+                        if check_existing_credentials(search_platform):
+                            search_credentials = find_credentials(search_platform)
+                            print("{search_credentials.platform}") 
+                            print(f"{search_credentials.account_user_name}") 
+                            print(f"{search_credentials.account_password}")
+                        else:
+                            print("That credential does not exist!")
+                    elif short_code == 'ds':
+                        if display_credentials():
+                            print('Here is a list of your saved credentials')
+                            print('\n')
 
-                for contact in display_contacts():
-                    print(f"{contact.first_name}{contact.last_name}{contact.email}{contact.phone_number}")
-                    print ('\n')
-            else:
-                    print('\n')
-                    print("You don't seem to have any contacts yet")
-                    print('\n')
-            
-        elif short_code == 'fc':
-            print("Enter the number you want to search for")
+                            for credential in display_credentials():
+                                print(f'{credential.platform} {credential.account_user_name}{credential.account_password}')
+                                print('\n')
+                        else:
+                            print ('\n')
+                            print ('Looks like you haven\'t saved that credential yet!')
+                            print ('\n')
+                    elif short_code == 'cc':
+                        print ("New Credentials")
+                        print ("-"*10)
 
-            search_number = input()
-            if check_existing_contacts(search_number):
-                search_contact = find_contact(search_number)
-                print(f"{search_contact.first_name} {search_contact.last_name}")
-                print('-'*20)
+                        print("Platform:")
+                        platform = input()
 
-                print(f"Phone number.......{search_contact.phone_number}")
-                print(f"Email address......{search_contact.email}")
-            else:
-                print("That contact does not exist")
+                        print("Account user name:")
+                        account_user_name = input()
+
+                        print("Account Password:")
+                        account_password = input()
+
+                        save_credentials(create_credentials(platform, account_user_name, account_password))
+                        print('\n')
+                        print(f'New Credentials {platform}{account_user_name}{account_password}')
+
+     
 
         elif short_code =='ex':
-            print("Bye......")
+            print("Have a lovely day......")
             break
 
         else:
