@@ -83,5 +83,13 @@ class TestUser(unittest.TestCase):
 
         self.assertTrue(user_exists)
 
+    def test_password_generator(self):
+        '''
+        Test to check if user can generate random passwords should they choose to generate passwords
+        '''
+
+        
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,3 +1,7 @@
+import random
+import string
+
+
 class Credentials:
     '''
     Class to generate new instances of the user's credentials.
@@ -29,6 +33,13 @@ class Credentials:
         delete_credentials method deletes a user's credentials from the credentials_list
         '''
         Credentials.credentials_list.remove(self)
+
+    def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+        '''
+        generate_password method that generates an 8 character password
+        '''
+        gen_pass=''.join(random.choice(char) for _ in range(size))
+        return gen_pass
 
     @classmethod
     def find_by_account_user_name(cls,account_user_name):

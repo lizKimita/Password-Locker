@@ -1,3 +1,6 @@
+import random
+import string
+
 class User:
     '''
     Class that generates new instances of the user.
@@ -31,6 +34,13 @@ class User:
         Delete_user method deletes a saved user from the user_list 
         '''
         User.user_list.remove(self)
+
+    def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+        '''
+        generate_password method that generates an 8 character password
+        '''
+        gen_pass=''.join(random.choice(char) for _ in range(size))
+        return gen_pass
 
     @classmethod
     def find_by_user_name(cls, user_name):
