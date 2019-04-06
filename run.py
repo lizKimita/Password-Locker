@@ -119,7 +119,7 @@ def main():
                         print ('\n')
                         print(f'Goodbye { user_name}.')
                         break
-                        
+
                     elif short_code == 'fd':
                         print ('\n')
                         print ('Enter the Platform you want to search for!')
@@ -160,8 +160,18 @@ def main():
                         print("Account user name:")
                         account_user_name = input()
 
-                        print("Account Password:")
-                        account_password = input()
+                        while True:
+                            print('Please choose an option for entering your password by choosing a short-code! \n mp -enter my password, gp - generate a password for me!')
+                            short_code = input().lower()
+                            if short_code == 'mp':
+                                print("Account Password:")
+                                account_password = input()
+                                break
+                            elif short_code =='gp':
+                                account_password = generate_password()
+                                break
+                            else: print('Ooops! Please try again!')
+                            break
 
                         save_credentials(create_credentials(platform, account_user_name, account_password))
                         print('\n')
