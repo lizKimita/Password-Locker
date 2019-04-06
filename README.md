@@ -1,8 +1,12 @@
-# {Application Name}
-#### {Brief description of application}, {Date of current version}
-#### By **{List of contributors}**
+# Password Locker Application
+
+#### This is an application that provides a centralised place where users can store their login credentials for all their accounts in one place. 2019
+
+#### By **Elizabeth Wanjiku Kimita**
+
 ## Description
-{This is a detailed description of your application, including its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }
+The application makes it easy for users with many accounts to keep track of their login details; i.e the platform, the login username and the password to access their accounts. Users are able to store all these details in a centralised place and have access to them whenever they want. Users can save the details, display all their saved accounts with their individual details, delete unneccesary accounts and search for specisic accounts among waht has already been saved.
+
 ## Setup/Installation Requirements
 * This is a great place
 * to list setup instructions

@@ -110,38 +110,47 @@ def main():
             save_user (create_new_user(first_name, last_name, user_name, password))  
             print('\n')
             print(f"New Account for {first_name } {last_name } created")
-            print('\n')
             print (f'hello {first_name}, you are now logged in!')
-
+            print('\n')
             while True:
                     print('To proceed use these shortcodes:\n cc - Create new Credentials, dc - Delete Credential, fd - Find Credential, ds - display saved credentials, ex - exit')
                     short_code = input().lower()
                     if short_code == 'ex':
-                        print(f'Goodbye{user_name}.')
+                        print ('\n')
+                        print(f'Goodbye { user_name}.')
                         break
+                        
                     elif short_code == 'fd':
+                        print ('\n')
                         print ('Enter the Platform you want to search for!')
                         search_platform = input()
                         if check_existing_credentials(search_platform):
                             search_credentials = find_credentials(search_platform)
-                            print(f"{search_credentials.platform}") 
-                            print(f"{search_credentials.account_user_name}") 
-                            print(f"{search_credentials.account_password}")
+                            print('\n')
+                            print(f"Platform:{ search_credentials.platform}") 
+                            print(f"User Name:{ search_credentials.account_user_name}") 
+                            print(f"Account Password:{ search_credentials.account_password}")
+                            print ('\n')
                         else:
                             print("That credential does not exist!")
                     elif short_code == 'ds':
                         if display_credentials():
+                            print ('\n')
                             print('Here is a list of your saved credentials')
                             print('\n')
 
                             for credential in display_credentials():
-                                print(f'{credential.platform} {credential.account_user_name }    {credential.account_password}')
+                                print(f'Platform: { credential.platform}')
+                                print('\n')
+                                print(f'Account User Name: {credential.account_user_name}')
+                                print(f'Account Password: {credential.account_password}')
                                 print('\n')
                         else:
                             print ('\n')
                             print ('Looks like you haven\'t saved that credential yet!')
                             print ('\n')
                     elif short_code == 'cc':
+                        print ('\n')
                         print ("New Credentials")
                         print ("-"*10)
 
@@ -156,16 +165,16 @@ def main():
 
                         save_credentials(create_credentials(platform, account_user_name, account_password))
                         print('\n')
-                        print(f'New Credentials {platform } {account_user_name } {account_password}')
-
+                        print(f'New Credentials: {platform } {account_user_name } {account_password}')
+                        print('\n')
      
 
         elif short_code =='ex':
-            print("Have a lovely day......")
+            print("Have a lovely day!")
             break
-
         else:
+            print('\n')
             print("I really didn't get that. Please use the short codes")
-
+            print('\n')
 if __name__ == '__main__':
      main()
