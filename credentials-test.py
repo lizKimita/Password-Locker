@@ -57,17 +57,17 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.credentials_list),1)
 
-    def test_find_credentials_by_account_user_name(self):
+    def test_find_credentials_by_platform(self):
         '''
-        Test to check if we can find a user's credentials their username and display the details
+        Test to check if we can find a user's credentials the platform and display the details
         '''
         self.new_credentials.save_credentials()
         test_credentials = Credentials("Glassdoor", "wilmwangi", "jobwil")
         test_credentials.save_credentials()
 
-        find_credentials = Credentials.find_by_account_user_name("wilmwangi")
+        find_credentials = Credentials.find_by_platform("Glassdoor")
 
-        self.assertEqual(find_credentials.platform, test_credentials.platform)
+        self.assertEqual(find_credentials.account_user_name, test_credentials.account_user_name)
 
     def test_credentials_exist(self):
         '''
@@ -77,7 +77,7 @@ class TestCredentials(unittest.TestCase):
         test_credentials = Credentials("LinkedIn", "kimk", "shikolinkd")
         test_credentials.save_credentials()
 
-        credentials_exist = Credentials.credentials_exist("kimk")
+        credentials_exist = Credentials.credentials_exist("LinkedIn")
 
         self.assertTrue(credentials_exist)
 

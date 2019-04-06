@@ -89,7 +89,6 @@ class TestUser(unittest.TestCase):
         Test to check if user can generate random passwords should they choose to generate passwords
         '''
 
-        
 
 
 if __name__ == '__main__':

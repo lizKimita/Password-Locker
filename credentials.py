@@ -17,11 +17,13 @@ class Credentials:
             platform: New user's platform
             account_user_name: New user_name for the platform
             account_password:New password for the platform
+            
         '''
 
         self.platform = platform
         self.account_user_name = account_user_name
         self.account_password = account_password
+       
 
     def save_credentials(self):
         '''
@@ -39,36 +41,36 @@ class Credentials:
         '''
         generate_password method that generates an 8 character password
         '''
-        gen_pass=''.join(random.choice(char) for _ in range(size))
-        return gen_pass
+        generate_password=''.join(random.choice(char) for _ in range(size))
+        return generate_password
 
     @classmethod
-    def find_by_account_user_name(cls,account_user_name):
+    def find_by_platform(cls,platform):
         '''
-        Method that takes in a user's user_name and displays his or her saved credentials
+        Method that takes in a user's platform and displays his or her saved credentials
 
         Args:
-            account_user_name:User_name to search for
+            platform:platform to search for
         Returns: 
             The Credentials saved by that user
         '''
 
         for credentials in cls.credentials_list:
-            if credentials.account_user_name == account_user_name:
+            if credentials.platform == platform:
                 return credentials
 
     @classmethod
-    def credentials_exist(cls, account_user_name):
+    def credentials_exist(cls, platform):
         '''
-        Method that checks if a credential exists fron the credentials_list
+        Method that checks if a credential exists from the credentials_list
 
         Args:
-            account_user_name:user_ name to search if it exists
+            platform:platform to search if it exists
         Returns:
             Boolean: True or false depending on if it exists
         '''
         for credentials in cls.credentials_list:
-            if credentials.account_user_name ==account_user_name:
+            if credentials.platform ==platform:
                 return True
 
         return False
