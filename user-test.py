@@ -48,17 +48,6 @@ class TestUser(unittest.TestCase):
         test_user.save_user()
         self.assertEqual(len(User.user_list),2)
 
-    def test_delete_user(self):
-        '''
-        test_delete_user test case to test if we can remove a user from our user's list
-        '''
-        self.new_user.save_user()
-        test_user = User("Njoki", "kimita", "jnnjoki", "njokikim")
-        test_user.save_user()
-
-        self.new_user.delete_user()
-        self.assertEqual(len(User.user_list),1)
-
     def test_find_user_by_user_name(self):
         '''
         Test to check if we can find a user by their username and display their details"
@@ -83,11 +72,6 @@ class TestUser(unittest.TestCase):
         user_exists = User.user_exists("gMuigai")
 
         self.assertTrue(user_exists)
-
-    def test_password_generator(self):
-        '''
-        Test to check if user can generate random passwords should they choose to generate passwords
-        '''
 
 
 

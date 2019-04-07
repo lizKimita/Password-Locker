@@ -37,13 +37,6 @@ class Credentials:
         '''
         Credentials.credentials_list.remove(self)
 
-    def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-        '''
-        generate_password method that generates an 8 character password
-        '''
-        generate_password=''.join(random.choice(char) for _ in range(size))
-        return generate_password
-
     @classmethod
     def find_by_platform(cls,platform):
         '''

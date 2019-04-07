@@ -26,11 +26,6 @@ def verify_user(user_name):
     '''
     return User.user_exists(user_name)
     
-def delete_user(user):
-    '''
-    Fuction that allows users to delete their accounts
-    '''
-    user.delete_user()
 
 #credentials Functions
 def create_credentials(platform, account_user_name, account_password):
@@ -72,12 +67,6 @@ def display_credentials():
     '''
     return Credentials.display_saved_credentials()
 
-def generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-    '''
-    Function that gives a user the option to generate a new password automatically
-    '''
-    new_password = Credentials.generate_password(self, size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits)
-    return new_password
 
 def main():
     print("Hello! Welcome to your personal password locker. What is your name?")
@@ -87,7 +76,7 @@ def main():
     print('\n')
 
     while True:
-        print(" Please Use these short codes to navigate: \n na - create a new Account, li - log into your account, da - delete your account, ex = exit the password locker app ")
+        print(" Please Use these short codes to navigate: \n na - create a new Account, li - log into your account, ex = exit the password locker app ")
             
         short_code = input().lower()
 
@@ -141,7 +130,6 @@ def main():
 
                             for credential in display_credentials():
                                 print(f'Platform: { credential.platform}')
-                                print('\n')
                                 print(f'Account User Name: {credential.account_user_name}')
                                 print(f'Account Password: {credential.account_password}')
                                 print('\n')
@@ -168,10 +156,12 @@ def main():
                                 account_password = input()
                                 break
                             elif short_code =='gp':
-                                account_password = generate_password()
+                                chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                                account_password = "".join(random.choice(chars) for _ in range(10))
                                 break
-                            else: print('Ooops! Please try again!')
-                            break
+                            else: 
+                                print('Ooops!I did not get that. Please try again!')
+                            
 
                         save_credentials(create_credentials(platform, account_user_name, account_password))
                         print('\n')
