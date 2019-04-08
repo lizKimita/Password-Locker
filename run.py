@@ -76,7 +76,7 @@ def main():
     print('\n')
 
     while True:
-        print(" Please Use these short codes to navigate: \n na - create a new Account, li - log into your account, ex = exit the password locker app ")
+        print(" Please Use these short codes to navigate: \n na - create a new Account, ex = exit the password locker app ")
             
         short_code = input().lower()
 
@@ -121,7 +121,9 @@ def main():
                             print(f"Account Password:{ search_credentials.account_password}")
                             print ('\n')
                         else:
+                            print('\n')
                             print("That credential does not exist!")
+                            print('\n')
                     elif short_code == 'ds':
                         if display_credentials():
                             print ('\n')
@@ -159,9 +161,12 @@ def main():
                                 print ('\n')
                             else:
                                 print ('\n')
-                                print ('We cannot find the credentials you want to delete.')
+                                print ('We cannot understand that shortcode, please use y or n.')
                                 print ('\n')
-
+                        else: 
+                            print ('\n')
+                            print(f'Looks like you do not have that kind of a credential')
+                            print ('\n')
                     elif short_code == 'cc':
                         print ('\n')
                         print ("New Credentials")
