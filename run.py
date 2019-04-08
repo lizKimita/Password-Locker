@@ -137,6 +137,31 @@ def main():
                             print ('\n')
                             print ('Looks like you haven\'t saved that credential yet!')
                             print ('\n')
+
+                    elif short_code == 'dc':
+                        print('Please enter the Platform of the credentials you would like to delete')
+                        delete_cred = input()
+                        if check_existing_credentials(delete_cred):
+                            search_credentials = find_credentials(delete_cred)
+                            print (f'Are you sure you want to delete the credentials for {search_credentials.platform}')
+                            print('\n')
+                            print (f'press y for yes and n to cancel')
+                            print ('\n')
+                            proceed =input().lower()
+                            if proceed == 'y':
+                                delete_credential(search_credentials)
+                                print ('\n')
+                                print(f'Credentials have been deleted')
+                                print ('\n')
+                            elif proceed == 'n':
+                                print ('\n')
+                                print(f'We have not deleted any credential')
+                                print ('\n')
+                            else:
+                                print ('\n')
+                                print ('We cannot find the credentials you want to delete.')
+                                print ('\n')
+
                     elif short_code == 'cc':
                         print ('\n')
                         print ("New Credentials")
